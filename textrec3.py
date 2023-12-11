@@ -9,7 +9,6 @@ import easyocr
 import imutils
 import numpy as np
 p.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
-player = pyttsx3.init()
 def resize(pic):
     chng = cv2.resize(pic, (900, 600))
     return chng
@@ -87,6 +86,7 @@ def scene_detect(path):
         font = cv2.FONT_HERSHEY_SIMPLEX
         c = cv2.rectangle(c, k, t, (0, 0, 0), 1)
         c = cv2.putText(c, text, k, font, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        player = pyttsx3.init()
         player.say(text)
     player.runAndWait()
     cv2.imshow("output", c)
